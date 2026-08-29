@@ -1,4 +1,4 @@
-﻿# 2D Platformer Game - Godot 4
+# 2D Platformer Game - Godot 4
 
 A 2D platformer game built in Godot 4.7.1 following the reference tutorial series *How to Make a 2D Platformer in Godot* by Coding With Russ.
 
@@ -30,3 +30,9 @@ A 2D platformer game built in Godot 4.7.1 following the reference tutorial serie
 - `audio_manager.gd`: Autoload singleton for continuous background music.
 - `scene_transition.tscn` / `scene_transition.gd`: Autoload CanvasLayer singleton for fade transitions.
 - `project.godot`: Godot 4 engine configuration.
+
+## Credits
+
+- Game development: PlatfrommerJose
+- Engine: Godot 4.7.1
+- Reference tutorial: Coding With Russ
