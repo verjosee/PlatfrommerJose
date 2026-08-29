@@ -31,6 +31,14 @@ A 2D platformer game built in Godot 4.7.1 following the reference tutorial serie
 - `scene_transition.tscn` / `scene_transition.gd`: Autoload CanvasLayer singleton for fade transitions.
 - `project.godot`: Godot 4 engine configuration.
 
+## Kendala dan Solusi
+
+Selama proses pengerjaan proyek, tidak terdapat kendala besar yang menghambat proses pengembangan game.
+
+Proses pembuatan dan implementasi fitur dapat dilakukan dengan baik menggunakan Godot Engine 4.7.1. Setelah seluruh fitur selesai dibuat, proyek juga dilakukan pengujian untuk memastikan player movement, jumping, animation, collision, audio, transisi level, dan pergantian antar level berjalan dengan baik.
+
+Karena tidak terdapat kendala yang signifikan, tidak ada proses troubleshooting khusus yang diperlukan selain melakukan pengecekan dan pengujian pada setiap fitur yang telah dibuat.
+
 ## Credits
 
 - Game development: PlatfrommerJose
