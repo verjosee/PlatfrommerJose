@@ -2,6 +2,12 @@
 
 A 2D platformer game built in Godot 4.7.1 following the reference tutorial series *How to Make a 2D Platformer in Godot* by Coding With Russ.
 
+## 🎥 Video Demo
+
+**▶️ [Tonton Video Demo Gameplay](./Recording.mp4)**
+
+Video di atas merupakan rekaman gameplay dan pengujian game. Klik link tersebut untuk membuka video `Recording.mp4` yang tersedia di repository.
+
 ## Features
 
 - **Character Controller**: Smooth physics movement, jumping (`-550.0 px/s`), gravity, dynamic sprite direction flipping, and state-driven animations (`idle`, `run`, `jump`, `fall`).
