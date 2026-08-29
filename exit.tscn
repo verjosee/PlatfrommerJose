@@ -1,0 +1,23 @@
+﻿[gd_scene format=3 uid="uid://dm0y3k1ex7a4p"]
+
+[ext_resource type="Script" path="res://exit.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://c32bul8lc2mjf" path="res://Props/GrassLand_Entry_1.png" id="2_tex"]
+[ext_resource type="AudioStream" path="res://brackeys_platformer_assets/sounds/power_up.wav" id="3_sound"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_exit"]
+size = Vector2(40, 80)
+
+[node name="Exit" type="Area2D"]
+script = ExtResource("1_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -48)
+scale = Vector2(3, 3)
+texture = ExtResource("2_tex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -40)
+shape = SubResource("RectangleShape2D_exit")
+
+[node name="ExitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_sound")
