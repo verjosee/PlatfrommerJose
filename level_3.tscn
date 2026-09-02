@@ -11,6 +11,8 @@
 [ext_resource type="Script" path="res://character_body_2d.gd" id="9_wnq0t"]
 [ext_resource type="PackedScene" path="res://exit.tscn" id="10_ra6nl"]
 [ext_resource type="Script" path="res://exit.gd" id="11_gxey3"]
+[ext_resource type="PackedScene" path="res://hud.tscn" id="12_hud"]
+[ext_resource type="PackedScene" path="res://apple.tscn" id="13_apple"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lfy8a"]
 texture = ExtResource("7_joegk")
@@ -115,6 +117,8 @@ sources/0 = SubResource("TileSetAtlasSource_lfy8a")
 
 [node name="Level3" type="Node2D" unique_id=85353561]
 
+[node name="HUD" type="CanvasLayer" parent="." instance=ExtResource("12_hud")]
+
 [node name="Background" type="Node2D" parent="." unique_id=87073832]
 
 [node name="BG_Sky" type="TextureRect" parent="Background" unique_id=1660645418]
@@ -173,3 +177,12 @@ script = ExtResource("9_wnq0t")
 position = Vector2(1000, 128)
 script = ExtResource("11_gxey3")
 target_level = "res://level_1.tscn"
+
+[node name="Apple1" type="Area2D" parent="." instance=ExtResource("13_apple")]
+position = Vector2(250, 500)
+
+[node name="Apple2" type="Area2D" parent="." instance=ExtResource("13_apple")]
+position = Vector2(550, 500)
+
+[node name="Apple3" type="Area2D" parent="." instance=ExtResource("13_apple")]
+position = Vector2(800, 500)
