@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://exit.gd" id="11_cuxq2"]
 [ext_resource type="PackedScene" path="res://hud.tscn" id="12_hud"]
 [ext_resource type="PackedScene" path="res://apple.tscn" id="13_apple"]
+[ext_resource type="Script" path="res://apple_randomizer.gd" id="14_random"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lfy8a"]
 texture = ExtResource("7_lvfll")
@@ -186,3 +187,6 @@ position = Vector2(600, 500)
 
 [node name="Apple3" type="Area2D" parent="." instance=ExtResource("13_apple")]
 position = Vector2(850, 500)
+
+[node name="AppleRandomizer" type="Node" parent="." unique_id=987654322]
+script = ExtResource("14_random")

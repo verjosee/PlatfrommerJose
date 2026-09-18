@@ -1,12 +1,241 @@
-[gd_scene load_steps=2 format=3 uid="uid://d9y8k4l2m6n7o"]
+[gd_scene load_steps=6 format=3 uid="uid://d9y8k4l2m6n7o"]
 
-[ext_resource type="Script" path="res://hud.gd" id="1_hud_script"]
+[ext_resource type="Script" path="res://hud.gd" id="1_hud"]
+[ext_resource type="Texture2D" path="res://brackeys_platformer_assets/sprites/coin.png" id="2_coin"]
+[ext_resource type="Texture2D" path="res://apple.png" id="3_apple"]
+[ext_resource type="FontFile" path="res://brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="4_font_bold"]
+[ext_resource type="FontFile" path="res://brackeys_platformer_assets/fonts/PixelOperator8.ttf" id="5_font_reg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_score"]
+bg_color = Color(0.0901961, 0.0941176, 0.141176, 0.784314)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 0.12549)
+shadow_color = Color(0, 0, 0, 0.247059)
+shadow_size = 8
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_collect"]
+bg_color = Color(0.0901961, 0.0941176, 0.141176, 0.784314)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.843137, 0.180392, 0.176471)
+shadow_color = Color(0, 0, 0, 0.247059)
+shadow_size = 8
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_banner"]
+bg_color = Color(0.0784314, 0.0784314, 0.109804, 0.901961)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+content_margin_left = 18.0
+content_margin_top = 14.0
+content_margin_right = 18.0
+content_margin_bottom = 14.0
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0.878431, 0.180392, 1)
+shadow_color = Color(0, 0, 0, 0.392157)
+shadow_size = 14
 
 [node name="HUD" type="CanvasLayer"]
-script = ExtResource("1_hud_script")
+layer = 10
+script = ExtResource("1_hud")
 
-[node name="HeartsContainer" type="HBoxContainer" parent="."]
-offset_left = 20.0
-offset_top = 20.0
-offset_right = 120.0
-offset_bottom = 52.0
+[node name="TopBar" type="HBoxContainer" parent="."]
+anchors_preset = 10
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+offset_left = 16.0
+offset_top = 14.0
+offset_right = -16.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+alignment = 0
+theme_override_constants/separation = 8
+
+[node name="HeartsContainer" type="HBoxContainer" parent="TopBar"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 4
+alignment = 0
+
+[node name="Spacer" type="Control" parent="TopBar"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RightPanel" type="HBoxContainer" parent="TopBar"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+alignment = 2
+theme_override_constants/separation = 12
+
+[node name="ScorePanel" type="PanelContainer" parent="TopBar/RightPanel"]
+custom_minimum_size = Vector2(160, 44)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_score")
+
+[node name="Margin" type="MarginContainer" parent="TopBar/RightPanel/ScorePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 4
+
+[node name="HBox" type="HBoxContainer" parent="TopBar/RightPanel/ScorePanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="ScoreIcon" type="TextureRect" parent="TopBar/RightPanel/ScorePanel/Margin/HBox"]
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("2_coin")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ScoreLabel" type="Label" parent="TopBar/RightPanel/ScorePanel/Margin/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("4_font_bold")
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+text = "0"
+horizontal_alignment = 0
+vertical_alignment = 1
+
+[node name="CollectiblePanel" type="PanelContainer" parent="TopBar/RightPanel"]
+custom_minimum_size = Vector2(150, 44)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_collect")
+
+[node name="Margin" type="MarginContainer" parent="TopBar/RightPanel/CollectiblePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="HBox" type="HBoxContainer" parent="TopBar/RightPanel/CollectiblePanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="CollectIcon" type="TextureRect" parent="TopBar/RightPanel/CollectiblePanel/Margin/HBox"]
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("3_apple")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CollectLabel" type="Label" parent="TopBar/RightPanel/CollectiblePanel/Margin/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("4_font_bold")
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "0 / 0"
+horizontal_alignment = 0
+vertical_alignment = 1
+
+[node name="ScoreTitle" type="Label" parent="TopBar/RightPanel/ScorePanel/Margin/HBox"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("5_font_reg")
+theme_override_font_sizes/font_size = 8
+theme_override_colors/font_color = Color(1, 1, 1, 0.65098)
+text = "SCORE"
+horizontal_alignment = 2
+vertical_alignment = 1
+visible = false
+
+[node name="Banner" type="Control" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Center" type="CenterContainer" parent="Banner"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="PanelContainer" parent="Banner/Center"]
+custom_minimum_size = Vector2(420, 68)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_banner")
+
+[node name="Margin" type="MarginContainer" parent="Banner/Center/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="Banner/Center/Panel/Margin"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_font_bold")
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(1, 0.933333, 0.180392, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "PERFECT! ALL COLLECTED!"
+horizontal_alignment = 1
+vertical_alignment = 1
