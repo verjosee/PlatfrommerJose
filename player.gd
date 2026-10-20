@@ -23,6 +23,8 @@ var initial_scale: Vector2 = Vector2(2, 2)
 var _scale_tween: Tween = null
 
 func _ready() -> void:
+	if not is_in_group("player"):
+		add_to_group("player")
 	if animated_sprite_2d:
 		initial_scale = animated_sprite_2d.scale
 

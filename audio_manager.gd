@@ -1,4 +1,4 @@
-﻿extends Node
+extends Node
 
 var bgm_player: AudioStreamPlayer
 

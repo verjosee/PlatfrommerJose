@@ -2,13 +2,15 @@ extends CanvasLayer
 # HUD - Menampilkan nyawa, skor, dan jumlah collectible
 # Terhubung ke GameManager lewat signal, animasi ringan
 
-@onready var hearts_container: HBoxContainer = get_node_or_null("TopBar/HeartsContainer") if get_node_or_null("TopBar/HeartsContainer") != null else get_node_or_null("HeartsContainer")
-@onready var score_label: Label = get_node_or_null("TopBar/RightPanel/ScorePanel/Margin/HBox/ScoreLabel")
-@onready var collectible_label: Label = get_node_or_null("TopBar/RightPanel/CollectiblePanel/Margin/HBox/CollectLabel")
+@onready var hearts_container: HBoxContainer = get_node_or_null("%HeartsContainer") if has_node("%HeartsContainer") else get_node_or_null("TopBar/HeartsContainer")
+@onready var score_label: Label = get_node_or_null("%ScoreLabel") if has_node("%ScoreLabel") else get_node_or_null("TopBar/RightPanel/ScorePanel/Margin/HBox/ScoreLabel")
+@onready var collectible_label: Label = get_node_or_null("%CollectLabel") if has_node("%CollectLabel") else get_node_or_null("TopBar/RightPanel/CollectiblePanel/Margin/HBox/CollectLabel")
+@onready var level_label: Label = get_node_or_null("%LevelLabel") if has_node("%LevelLabel") else get_node_or_null("TopBar/RightPanel/LevelPanel/Margin/LevelLabel")
 @onready var score_panel: PanelContainer = get_node_or_null("TopBar/RightPanel/ScorePanel")
 @onready var collectible_panel: PanelContainer = get_node_or_null("TopBar/RightPanel/CollectiblePanel")
-@onready var banner: Control = get_node_or_null("Banner")
-@onready var banner_label: Label = get_node_or_null("Banner/Panel/Margin/Label")
+@onready var level_panel: PanelContainer = get_node_or_null("TopBar/RightPanel/LevelPanel")
+@onready var banner: Control = get_node_or_null("%Banner") if has_node("%Banner") else get_node_or_null("Banner")
+@onready var banner_label: Label = get_node_or_null("%BannerLabel") if has_node("%BannerLabel") else get_node_or_null("Banner/Center/Panel/Margin/BannerLabel")
 
 @onready var heart_texture: Texture2D = preload("res://heart.png")
 
@@ -70,6 +72,24 @@ func _ready() -> void:
 	if banner:
 		banner.visible = false
 		banner.modulate.a = 0.0
+
+	_update_level_label()
+
+func _update_level_label() -> void:
+	if not level_label:
+		return
+	var scene = owner if owner != null else (get_parent() if get_parent() != null else get_tree().current_scene)
+	if scene:
+		var scene_name = scene.name.to_lower()
+		var file_path = scene.scene_file_path.to_lower() if ("scene_file_path" in scene and scene.scene_file_path != "") else ""
+		if "level3" in scene_name or "level_3" in file_path:
+			level_label.text = "LEVEL 3"
+		elif "level2" in scene_name or "level_2" in file_path:
+			level_label.text = "LEVEL 2"
+		elif "level1" in scene_name or "level_1" in file_path:
+			level_label.text = "LEVEL 1"
+		else:
+			level_label.text = scene.name.to_upper()
 
 func _count_apples_in_node(node: Node) -> int:
 	var count: int = 0

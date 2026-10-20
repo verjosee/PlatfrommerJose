@@ -1,4 +1,4 @@
-﻿[gd_scene format=3 uid="uid://c8y8m07w4jx9t"]
+[gd_scene format=3 uid="uid://c8y8m07w4jx9t"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_script"]
 [ext_resource type="Texture2D" path="res://male_hero-idle.png" id="2_idle"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" path="res://male_hero-jump.png" id="4_jump"]
 [ext_resource type="Texture2D" path="res://male_hero-fall.png" id="5_fall"]
 [ext_resource type="AudioStream" path="res://brackeys_platformer_assets/sounds/jump.wav" id="6_jump_sound"]
+[ext_resource type="Script" path="res://kamera.gd" id="7_kamera"]
 
 [sub_resource type="AtlasTexture" id="fall_0"]
 atlas = ExtResource("5_fall")
@@ -244,9 +245,8 @@ animations = [{
 radius = 11.0
 height = 52.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_script")
-add_to_group = &"player"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -30)
@@ -260,3 +260,16 @@ shape = SubResource("CapsuleShape2D_1")
 
 [node name="JumpSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_jump_sound")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true
+position_smoothing_speed = 5.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.1
+drag_top_margin = 0.2
+drag_right_margin = 0.1
+drag_bottom_margin = 0.2
+editor_draw_drag_margin = true
+script = ExtResource("7_kamera")
