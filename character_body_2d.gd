@@ -32,6 +32,8 @@ var initial_scale: Vector2 = Vector2(2, 2)
 var _scale_tween: Tween = null
 
 func _ready() -> void:
+	if not is_in_group("player"):
+		add_to_group("player")
 	lives = 1
 	lives_changed.emit(lives)
 	can_air_jump = false

@@ -1,10 +1,29 @@
-[gd_scene load_steps=6 format=3 uid="uid://d9y8k4l2m6n7o"]
+[gd_scene load_steps=7 format=3 uid="uid://d9y8k4l2m6n7o"]
 
 [ext_resource type="Script" path="res://hud.gd" id="1_hud"]
 [ext_resource type="Texture2D" path="res://brackeys_platformer_assets/sprites/coin.png" id="2_coin"]
 [ext_resource type="Texture2D" path="res://apple.png" id="3_apple"]
 [ext_resource type="FontFile" path="res://brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="4_font_bold"]
 [ext_resource type="FontFile" path="res://brackeys_platformer_assets/fonts/PixelOperator8.ttf" id="5_font_reg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_level"]
+bg_color = Color(0.0901961, 0.0941176, 0.141176, 0.784314)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.4, 0.7, 1, 0.3)
+shadow_color = Color(0, 0, 0, 0.247059)
+shadow_size = 8
+shadow_offset = Vector2(0, 2)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_score"]
 bg_color = Color(0.0901961, 0.0941176, 0.141176, 0.784314)
@@ -83,6 +102,7 @@ alignment = 0
 theme_override_constants/separation = 8
 
 [node name="HeartsContainer" type="HBoxContainer" parent="TopBar"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -101,6 +121,32 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 alignment = 2
 theme_override_constants/separation = 12
+
+[node name="LevelPanel" type="PanelContainer" parent="TopBar/RightPanel"]
+custom_minimum_size = Vector2(110, 44)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_level")
+
+[node name="Margin" type="MarginContainer" parent="TopBar/RightPanel/LevelPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="LevelLabel" type="Label" parent="TopBar/RightPanel/LevelPanel/Margin"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_font_bold")
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.7, 0.9, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "LEVEL 1"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ScorePanel" type="PanelContainer" parent="TopBar/RightPanel"]
 custom_minimum_size = Vector2(160, 44)
@@ -131,6 +177,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="ScoreLabel" type="Label" parent="TopBar/RightPanel/ScorePanel/Margin/HBox"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -174,6 +221,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="CollectLabel" type="Label" parent="TopBar/RightPanel/CollectiblePanel/Margin/HBox"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -199,6 +247,7 @@ vertical_alignment = 1
 visible = false
 
 [node name="Banner" type="Control" parent="."]
+unique_name_in_owner = true
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
@@ -229,7 +278,8 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 10
 
-[node name="Label" type="Label" parent="Banner/Center/Panel/Margin"]
+[node name="BannerLabel" type="Label" parent="Banner/Center/Panel/Margin"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_font_bold")
 theme_override_font_sizes/font_size = 18
